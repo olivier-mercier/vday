@@ -6,122 +6,112 @@
   <title>Bubba Mini Game</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    .game-container {
+    .image-container {
       text-align: center;
-    }
-
-    .question {
-      font-size: 1.5em;
-      margin: 20px 0;
+      margin-bottom: 20px;
     }
 
     .options {
-      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 10px;
     }
 
-    .btn-option {
-      display: inline-block;
+    .option-btn {
       padding: 10px 20px;
-      margin: 10px;
-      font-size: 18px;
+      font-size: 16px;
       background-color: #ff3366;
       color: white;
-      text-decoration: none;
+      border: none;
+      cursor: pointer;
       border-radius: 5px;
     }
 
-    .btn-option:hover {
+    .option-btn:hover {
       opacity: 0.8;
     }
 
-    .image {
-      width: 70%;
-      max-width: 500px;
-      margin: 20px 0;
-      border-radius: 10px;
+    .message {
+      text-align: center;
+      margin-top: 20px;
+      font-size: 18px;
+      font-weight: bold;
     }
   </style>
 </head>
 <body>
-  <div class="game-container">
+  <div class="container">
     <h1>Bubba Mini Game</h1>
-
-    <div class="question" id="question">Question 1: What is this?</div>
-
-    <img src="photo1.jpg" alt="Question Image" class="image" id="image">
-
-    <div class="options">
-      <a href="#" class="btn-option" id="option1">Option 1</a>
-      <a href="#" class="btn-option" id="option2">Option 2</a>
-      <a href="#" class="btn-option" id="option3">Option 3</a>
-      <a href="#" class="btn-option" id="option4">Option 4</a>
+    <div id="question-container">
+      <!-- Image and options will be dynamically inserted here -->
     </div>
+    
+    <div class="message" id="message"></div>
 
-    <div id="feedback"></div>
+    <!-- Button to start the game -->
+    <div class="options" id="options">
+      <!-- Option buttons will be dynamically inserted here -->
+    </div>
   </div>
 
   <script>
-    // Question data
     const questions = [
       {
-        image: "viv-image.jpeg",
-        question: "What is this?",
-        options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-        correct: 0 // Index of correct option
+        image: 'image1.jpg', // Replace with the actual image path
+        options: ['Option A', 'Option B', 'Option C', 'Option D'],
+        correctAnswer: 0 // Index of correct option (e.g., 'Option A')
       },
       {
-        image: "viv-dinner.jpeg",
-        question: "What's this one?",
-        options: ["Option 1", "Option 2", "Option 3", "Option 4"],
-        correct: 2
+        image: 'image2.jpg', // Replace with the actual image path
+        options: ['Option A', 'Option B', 'Option C', 'Option D'],
+        correctAnswer: 2 // Index of correct option
       },
-      // Add more questions here
+      // Add more questions as needed
     ];
 
-    let currentQuestion = 0;
+    let currentQuestionIndex = 0;
 
-    const loadQuestion = () => {
-      const questionData = questions[currentQuestion];
+    // Function to render the current question
+    function renderQuestion() {
+      const question = questions[currentQuestionIndex];
+      const questionContainer = document.getElementById('question-container');
+      const optionsContainer = document.getElementById('options');
+      const messageContainer = document.getElementById('message');
 
-      document.getElementById('image').src = questionData.image;
-      document.getElementById('question').textContent = questionData.question;
-      document.getElementById('option1').textContent = questionData.options[0];
-      document.getElementById('option2').textContent = questionData.options[1];
-      document.getElementById('option3').textContent = questionData.options[2];
-      document.getElementById('option4').textContent = questionData.options[3];
-    };
+      // Clear previous messages
+      messageContainer.innerHTML = '';
 
-    const checkAnswer = (index) => {
-      const questionData = questions[currentQuestion];
-      const feedback = document.getElementById('feedback');
-      
-      if (index === questionData.correct) {
-        feedback.textContent = "Correct!";
-        feedback.style.color = "green";
+      // Display the image
+      questionContainer.innerHTML = `<img src="${question.image}" alt="Question Image" class="question-image" />`;
+
+      // Display the options
+      optionsContainer.innerHTML = question.options.map((option, index) => `
+        <button class="option-btn" onclick="checkAnswer(${index})">${option}</button>
+      `).join('');
+    }
+
+    // Function to check the selected answer
+    function checkAnswer(selectedIndex) {
+      const question = questions[currentQuestionIndex];
+      const messageContainer = document.getElementById('message');
+
+      if (selectedIndex === question.correctAnswer) {
+        messageContainer.innerHTML = 'Correct! Moving to next question...';
+        setTimeout(() => {
+          currentQuestionIndex++;
+          if (currentQuestionIndex < questions.length) {
+            renderQuestion();
+          } else {
+            messageContainer.innerHTML = 'Congratulations, you completed the game!';
+          }
+        }, 1000); // Move to the next question after 1 second
       } else {
-        feedback.textContent = "Wrong! Try again.";
-        feedback.style.color = "red";
+        messageContainer.innerHTML = 'Oops! That\'s the wrong answer. Try again.';
       }
+    }
 
-      setTimeout(() => {
-        feedback.textContent = "";
-        currentQuestion++;
-        if (currentQuestion < questions.length) {
-          loadQuestion();
-        } else {
-          feedback.textContent = "You finished the game!";
-          feedback.style.color = "blue";
-        }
-      }, 1000);
-    };
-
-    document.getElementById('option1').addEventListener('click', () => checkAnswer(0));
-    document.getElementById('option2').addEventListener('click', () => checkAnswer(1));
-    document.getElementById('option3').addEventListener('click', () => checkAnswer(2));
-    document.getElementById('option4').addEventListener('click', () => checkAnswer(3));
-
-    // Load first question
-    loadQuestion();
+    // Initialize the game
+    renderQuestion();
   </script>
 </body>
 </html>
