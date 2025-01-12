@@ -6,38 +6,35 @@ body {
     color: #333;
     text-align: center;
     cursor: url('heart-image.png'), auto;
-    position: relative;
-    overflow-y: auto; /* Allow scrolling */
-    min-height: 100vh; /* Ensure body is full height */
-}
-
-.container {
+    overflow-x: hidden; /* Prevent horizontal scroll */
+  }
+  
+  .container {
     padding: 20px;
-    position: relative;
-    z-index: 1;
-}
-
-h1 {
+    position: relative; /* Allow hearts to float over the content */
+  }
+  
+  h1 {
     font-size: 2.5em;
     color: #ff3366;
-}
-
-h2 {
+  }
+  
+  h2 {
     color: #ff6699;
-}
-
-.main-image, .plan-image {
+  }
+  
+  .main-image, .plan-image {
     max-width: 80%;
     height: auto;
     margin: 20px 0;
     border-radius: 10px;
-}
-
-.buttons {
+  }
+  
+  .buttons {
     margin: 20px 0;
-}
-
-.btn {
+  }
+  
+  .btn {
     text-decoration: none;
     display: inline-block;
     padding: 10px 20px;
@@ -45,40 +42,34 @@ h2 {
     font-size: 18px;
     color: white;
     border-radius: 5px;
-}
-
-.yes-btn {
+  }
+  
+  .yes-btn {
     background-color: #ff3366;
-}
-
-.no-btn {
+  }
+  
+  .no-btn {
     background-color: #333;
-}
-
-.btn:hover {
+  }
+  
+  .btn:hover {
     opacity: 0.8;
-}
-
-.plan-item {
+  }
+  
+  .plan-item {
     margin: 30px 0;
-}
-
-.heart {
+  }
+  
+  /* Keyframes for floating hearts animation */
+  @keyframes float {
+    0% { transform: translateY(100vh); }
+    100% { transform: translateY(-10vh); }
+  }
+  
+  /* Styling for floating hearts */
+  .heart {
     position: absolute;
-    left: 50%;
-    top: 100vh; /* Start from the bottom of the screen */
-    font-size: 24px;
-    animation: float 6s linear forwards;
-    z-index: 9999; /* Ensure hearts are above content */
-    pointer-events: none; /* Make sure hearts don't block interaction */
-}
-
-/* Keyframes for floating hearts animation */
-@keyframes float {
-    0% {
-        transform: translateY(100vh); /* Start from bottom */
-    }
-    100% {
-        transform: translateY(-10vh); /* Move to just below the top */
-    }
-}
+    font-size: 2rem;
+    animation: float 4s linear infinite;
+    z-index: 9999; /* Ensure hearts float over everything */
+  }
