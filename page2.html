@@ -6,7 +6,8 @@
   <title>My Plans for Us</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="position: relative;"> <!-- Added relative position to body -->
+<body style="position: relative;"> <!-- Body has relative positioning -->
+
   <div class="container">
     <h1>Here’s what I’ve planned for us!</h1>
 
@@ -28,16 +29,17 @@
       <p>A cozy movie night with your favorite film and snacks.</p>
     </div>
   </div>
+
   <script>
     // Function to create and animate floating hearts
     const hearts = () => {
       const heart = document.createElement('div');
       heart.textContent = "❤️";
-      heart.style.position = 'absolute';
+      heart.style.position = 'fixed';  // Position hearts relative to the viewport
       heart.style.left = Math.random() * 100 + 'vw';  // Random horizontal position
       heart.style.top = '0';  // Start from the top of the screen
-      heart.style.zIndex = '9999';  // Ensure hearts appear above other content
-      heart.style.fontSize = '24px';  // Adjust size of the hearts
+      heart.style.zIndex = '9999';  // Ensure hearts appear above everything
+      heart.style.fontSize = '24px';  // Adjust the size of the hearts
       heart.style.animation = 'float 4s linear';  // Floating animation
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 4000);  // Remove after 4 seconds
@@ -46,12 +48,12 @@
     // Trigger floating hearts every 300ms
     setInterval(hearts, 300);
   </script>
-  
+
   <style>
     /* Keyframes for floating hearts animation */
     @keyframes float {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-100vh); }
+      100% { transform: translateY(-100vh); } /* Move up to the top */
     }
   </style>  
 </body>
