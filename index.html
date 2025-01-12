@@ -22,12 +22,15 @@
     // Wait for the button click
     document.querySelector('#yes-btn').addEventListener('click', (e) => {
       e.preventDefault();  // Prevent navigation
-      confetti();  // Trigger confetti
+      
+      // Trigger confetti animation
+      confetti();
 
-      // Optional: Delay navigation to page2 after confetti shows
+      // Control the duration of the animation
       setTimeout(() => {
-        window.location.href = 'page2.html';  // Manually navigate after the confetti
-      }, 5000);  // Adjust delay (in ms) as needed to give confetti time to show
+        // Navigate after confetti finishes
+        window.location.href = 'page2.html';
+      }, 5000);  // Delay set to 5000ms (5 seconds)
     });
   </script>
 </body>
