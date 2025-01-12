@@ -5,36 +5,34 @@ body {
     background-color: #ffe6e6;
     color: #333;
     text-align: center;
-    cursor: url('heart-image.png'), auto;
-    overflow-x: hidden; /* Prevent horizontal scroll */
-  }
-  
-  .container {
+    cursor: url('heart-image.png'), auto; /* Keep custom heart cursor */
+}
+
+.container {
     padding: 20px;
-    position: relative; /* Allow hearts to float over the content */
-  }
-  
-  h1 {
+}
+
+h1 {
     font-size: 2.5em;
     color: #ff3366;
-  }
-  
-  h2 {
+}
+
+h2 {
     color: #ff6699;
-  }
-  
-  .main-image, .plan-image {
+}
+
+.main-image, .plan-image {
     max-width: 80%;
     height: auto;
     margin: 20px 0;
     border-radius: 10px;
-  }
-  
-  .buttons {
+}
+
+.buttons {
     margin: 20px 0;
-  }
-  
-  .btn {
+}
+
+.btn {
     text-decoration: none;
     display: inline-block;
     padding: 10px 20px;
@@ -42,34 +40,20 @@ body {
     font-size: 18px;
     color: white;
     border-radius: 5px;
-  }
-  
-  .yes-btn {
+}
+
+.yes-btn {
     background-color: #ff3366;
-  }
-  
-  .no-btn {
+}
+
+.no-btn {
     background-color: #333;
-  }
-  
-  .btn:hover {
+}
+
+.btn:hover {
     opacity: 0.8;
-  }
-  
-  .plan-item {
+}
+
+.plan-item {
     margin: 30px 0;
-  }
-  
-  /* Keyframes for floating hearts animation */
-  @keyframes float {
-    0% { transform: translateY(100vh); }
-    100% { transform: translateY(-10vh); }
-  }
-  
-  /* Styling for floating hearts */
-  .heart {
-    position: absolute;
-    font-size: 2rem;
-    animation: float 4s linear infinite;
-    z-index: 9999; /* Ensure hearts float over everything */
-  }
+}
