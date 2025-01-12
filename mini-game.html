@@ -137,6 +137,9 @@
             renderQuestion();
           } else {
             messageContainer.innerHTML = 'Congratulations, you completed the game!';
+            setTimeout(() => {
+                window.location.href = 'finalpage.html';
+                }, 3000); // Delay the transition by 3 seconds
           }
         }, 1000); // Move to the next question after 1 second
       } else {
