@@ -57,16 +57,36 @@
   <script>
     const questions = [
       {
-        image: 'image1.jpg', // Replace with the actual image path
-        options: ['Option A', 'Option B', 'Option C', 'Option D'],
-        correctAnswer: 0 // Index of correct option (e.g., 'Option A')
+        image: 'mg-casamadera.jpeg', // Replace with the actual image path
+        question: "Where did we enjoy this fine meal?",
+        options: ['Option A', 'Option B', 'Casa Madera', 'Option D'],
+        correctAnswer: 2 // Index of correct option (e.g., 'Option A')
       },
       {
-        image: 'image2.jpg', // Replace with the actual image path
-        options: ['Option A', 'Option B', 'Option C', 'Option D'],
-        correctAnswer: 2 // Index of correct option
+        image: 'mg-ripleys.jpeg', // Replace with the actual image path
+        question: "Where did we enjoy this fine dessert?",
+        options: ['Ripleys', 'Option B', 'Option C', 'Option D'],
+        correctAnswer: 0 // Index of correct option
       },
-      // Add more questions as needed
+      {
+        image: 'mg-pianopiano.jpeg', // Replace with the actual image path
+        question: "Where did we enjoy this fine dessert?",
+        options: ['Option A', 'Option B', 'Option C', 'Piano Piano'],
+        correctAnswer: 3 // Index of correct option
+      },
+      {
+        image: 'mg-sleep-liberty-bed.jpeg', // Replace with the actual image path
+        question: "Where is this sleepy bubba photo from?",
+        options: ['St Clair', 'Liberty Bed', 'Liberty Couch', 'Vacation'],
+        correctAnswer: 1 // Index of correct option
+      },
+      {
+        image: 'mg-sleep-stclair.jpeg', // Replace with the actual image path
+        question: "Where is this sleepy bubba photo from?",
+        options: ['St Clair', 'Liberty Bed', 'Liberty Couch', 'Vacation'],
+        correctAnswer: 0 // Index of correct option
+      },
+      //  Add more questions as needed
     ];
 
     let currentQuestionIndex = 0;
@@ -81,8 +101,14 @@
       // Clear previous messages
       messageContainer.innerHTML = '';
 
-      // Display the image
-      questionContainer.innerHTML = `<img src="${question.image}" alt="Question Image" class="question-image" />`;
+    //   // Display the image
+    //   questionContainer.innerHTML = `<img src="${question.image}" alt="Question Image" class="question-image" />`;
+
+      // Display the question text above the image
+      questionContainer.innerHTML = `
+        <h2 class="question-text">${question.question}</h2>
+        <img src="${question.image}" alt="Question Image" class="question-image" />
+        `;
 
       // Display the options
       optionsContainer.innerHTML = question.options.map((option, index) => `
