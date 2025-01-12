@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bubba Mini Game</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .game-container {
+      text-align: center;
+    }
+
+    .question {
+      font-size: 1.5em;
+      margin: 20px 0;
+    }
+
+    .options {
+      margin-top: 20px;
+    }
+
+    .btn-option {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 18px;
+      background-color: #ff3366;
+      color: white;
+      text-decoration: none;
+      border-radius: 5px;
+    }
+
+    .btn-option:hover {
+      opacity: 0.8;
+    }
+
+    .image {
+      width: 70%;
+      max-width: 500px;
+      margin: 20px 0;
+      border-radius: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>Bubba Mini Game</h1>
+
+    <div class="question" id="question">Question 1: What is this?</div>
+
+    <img src="photo1.jpg" alt="Question Image" class="image" id="image">
+
+    <div class="options">
+      <a href="#" class="btn-option" id="option1">Option 1</a>
+      <a href="#" class="btn-option" id="option2">Option 2</a>
+      <a href="#" class="btn-option" id="option3">Option 3</a>
+      <a href="#" class="btn-option" id="option4">Option 4</a>
+    </div>
+
+    <div id="feedback"></div>
+  </div>
+
+  <script>
+    // Question data
+    const questions = [
+      {
+        image: "viv-image.jpeg",
+        question: "What is this?",
+        options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+        correct: 0 // Index of correct option
+      },
+      {
+        image: "viv-dinner.jpeg",
+        question: "What's this one?",
+        options: ["Option 1", "Option 2", "Option 3", "Option 4"],
+        correct: 2
+      },
+      // Add more questions here
+    ];
+
+    let currentQuestion = 0;
+
+    const loadQuestion = () => {
+      const questionData = questions[currentQuestion];
+
+      document.getElementById('image').src = questionData.image;
+      document.getElementById('question').textContent = questionData.question;
+      document.getElementById('option1').textContent = questionData.options[0];
+      document.getElementById('option2').textContent = questionData.options[1];
+      document.getElementById('option3').textContent = questionData.options[2];
+      document.getElementById('option4').textContent = questionData.options[3];
+    };
+
+    const checkAnswer = (index) => {
+      const questionData = questions[currentQuestion];
+      const feedback = document.getElementById('feedback');
+      
+      if (index === questionData.correct) {
+        feedback.textContent = "Correct!";
+        feedback.style.color = "green";
+      } else {
+        feedback.textContent = "Wrong! Try again.";
+        feedback.style.color = "red";
+      }
+
+      setTimeout(() => {
+        feedback.textContent = "";
+        currentQuestion++;
+        if (currentQuestion < questions.length) {
+          loadQuestion();
+        } else {
+          feedback.textContent = "You finished the game!";
+          feedback.style.color = "blue";
+        }
+      }, 1000);
+    };
+
+    document.getElementById('option1').addEventListener('click', () => checkAnswer(0));
+    document.getElementById('option2').addEventListener('click', () => checkAnswer(1));
+    document.getElementById('option3').addEventListener('click', () => checkAnswer(2));
+    document.getElementById('option4').addEventListener('click', () => checkAnswer(3));
+
+    // Load first question
+    loadQuestion();
+  </script>
+</body>
+</html>
