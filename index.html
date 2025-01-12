@@ -21,16 +21,15 @@
   <script>
     // Wait for the button click
     document.querySelector('#yes-btn').addEventListener('click', (e) => {
-      e.preventDefault();  // Prevent navigation
-      
+      e.preventDefault();  // Prevent navigation immediately
+
       // Trigger confetti animation
       confetti();
 
-      // Control the duration of the animation
+      // Delay navigation to page2.html
       setTimeout(() => {
-        // Navigate after confetti finishes
-        window.location.href = 'page2.html';
-      }, 5000);  // Delay set to 5000ms (5 seconds)
+        window.location.href = 'page2.html'; // Manually redirect after confetti
+      }, 5000); // 5-second delay for confetti to be visible
     });
   </script>
 </body>
