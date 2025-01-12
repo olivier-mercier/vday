@@ -6,14 +6,16 @@ body {
     color: #333;
     text-align: center;
     cursor: url('heart-image.png'), auto;
-    position: relative; /* Added for floating hearts */
-    overflow: hidden; /* Hide scrollbars caused by hearts */
+    position: relative;
+    overflow: auto; /* Allow scrolling */
+    height: 100vh; /* Ensure body takes full viewport height */
 }
 
 .container {
     padding: 20px;
-    position: relative; /* Ensure content is positioned correctly above hearts */
-    z-index: 1; /* Ensure content appears above the floating hearts */
+    position: relative;
+    z-index: 1;
+    min-height: 100vh; /* Ensure container is at least full height */
 }
 
 h1 {
@@ -60,16 +62,16 @@ h2 {
 
 .plan-item {
     margin: 30px 0;
-    z-index: 1; /* Ensure content appears above the floating hearts */
+    z-index: 1;
 }
 
 /* Keyframes for floating hearts animation */
 @keyframes float {
     0% {
-        transform: translateY(0); /* Start from the bottom */
+        transform: translateY(0);
     }
     100% {
-        transform: translateY(-100vh); /* Move up to the top */
+        transform: translateY(-100vh);
     }
 }
 
@@ -78,8 +80,8 @@ h2 {
     position: absolute;
     left: 50%;
     top: 100vh; /* Start from bottom */
-    z-index: 9999; /* Ensure it appears above everything */
-    font-size: 24px; /* Size of the hearts */
+    z-index: 9999;
+    font-size: 24px;
     pointer-events: none; /* Prevent hearts from blocking clicks */
-    animation: float 6s linear forwards; /* Animate hearts */
+    animation: float 6s linear forwards;
 }
