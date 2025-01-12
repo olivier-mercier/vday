@@ -5,6 +5,7 @@ body {
     background-color: #ffe6e6;
     color: #333;
     text-align: center;
+    cursor: url('heart-image.png'), auto;
   }
   
   .container {

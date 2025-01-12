@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Will You Be My Valentine?</title>
   <link rel="stylesheet" href="style.css">
+  <!-- Load the confetti library -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 <body>
   <div class="container">
@@ -15,5 +17,11 @@
       <button class="btn no-btn" onclick="alert('Are you sure? 😢')">No</button>
     </div>
   </div>
+  <!-- Add custom script to handle confetti -->
+  <script>
+    document.querySelector('.yes-btn').addEventListener('click', (e) => {
+      confetti();
+    });
+  </script>
 </body>
 </html>

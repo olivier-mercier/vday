@@ -28,5 +28,28 @@
       <p>A cozy movie night with your favorite film and snacks.</p>
     </div>
   </div>
+  <script>
+    // Function to create and animate floating hearts
+    const hearts = () => {
+      const heart = document.createElement('div');
+      heart.textContent = "❤️";
+      heart.style.position = 'absolute';
+      heart.style.left = Math.random() * 100 + 'vw';  // Random horizontal position
+      heart.style.animation = 'float 4s linear';  // Floating animation
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 4000);  // Remove after 4 seconds
+    };
+  
+    // Trigger floating hearts every 300ms
+    setInterval(hearts, 300);
+  </script>
+  
+  <style>
+    /* Keyframes for floating hearts animation */
+    @keyframes float {
+      0% { transform: translateY(100vh); }
+      100% { transform: translateY(-10vh); }
+    }
+  </style>  
 </body>
 </html>
