@@ -7,15 +7,14 @@ body {
     text-align: center;
     cursor: url('heart-image.png'), auto;
     position: relative;
-    overflow: auto; /* Allow scrolling */
-    height: 100vh; /* Ensure body takes full viewport height */
+    overflow-y: auto; /* Allow scrolling */
+    min-height: 100vh; /* Ensure body is full height */
 }
 
 .container {
     padding: 20px;
     position: relative;
     z-index: 1;
-    min-height: 100vh; /* Ensure container is at least full height */
 }
 
 h1 {
@@ -62,26 +61,24 @@ h2 {
 
 .plan-item {
     margin: 30px 0;
-    z-index: 1;
+}
+
+.heart {
+    position: absolute;
+    left: 50%;
+    top: 100vh; /* Start from the bottom of the screen */
+    font-size: 24px;
+    animation: float 6s linear forwards;
+    z-index: 9999; /* Ensure hearts are above content */
+    pointer-events: none; /* Make sure hearts don't block interaction */
 }
 
 /* Keyframes for floating hearts animation */
 @keyframes float {
     0% {
-        transform: translateY(0);
+        transform: translateY(100vh); /* Start from bottom */
     }
     100% {
-        transform: translateY(-100vh);
+        transform: translateY(-10vh); /* Move to just below the top */
     }
-}
-
-/* Hearts styling */
-.heart {
-    position: absolute;
-    left: 50%;
-    top: 100vh; /* Start from bottom */
-    z-index: 9999;
-    font-size: 24px;
-    pointer-events: none; /* Prevent hearts from blocking clicks */
-    animation: float 6s linear forwards;
 }
