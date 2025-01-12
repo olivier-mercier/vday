@@ -6,8 +6,8 @@
   <title>My Plans for Us</title>
   <link rel="stylesheet" href="style.css">
 </head>
-<body style="position: relative; overflow: hidden;"> <!-- Add overflow: hidden to body -->
-  
+<body style="position: relative; overflow: hidden;"> <!-- Add overflow: hidden to prevent scrollbars -->
+
   <div class="container">
     <h1>Here’s what I’ve planned for us!</h1>
 
@@ -35,13 +35,13 @@
     const hearts = () => {
       const heart = document.createElement('div');
       heart.textContent = "❤️";
-      heart.style.position = 'fixed';  // Position hearts relative to the viewport
+      heart.style.position = 'absolute';  // Position hearts relative to the viewport
       heart.style.left = Math.random() * 100 + 'vw';  // Random horizontal position
-      heart.style.top = Math.random() * 100 + 'vh';  // Random vertical position
+      heart.style.top = '100vh';  // Start from the bottom of the viewport
       heart.style.zIndex = '9999';  // Ensure hearts appear above everything
       heart.style.fontSize = '24px';  // Adjust the size of the hearts
       heart.style.pointerEvents = 'none';  // Prevent interaction with the hearts
-      heart.style.animation = 'float 6s linear infinite';  // Floating animation
+      heart.style.animation = 'float 6s linear forwards';  // Animation for floating hearts
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 6000);  // Remove after 6 seconds
     };
@@ -54,7 +54,7 @@
     /* Keyframes for floating hearts animation */
     @keyframes float {
       0% { transform: translateY(0); }
-      100% { transform: translateY(-100vh); } /* Move up to the top */
+      100% { transform: translateY(-100vh); }  /* Move up to the top of the viewport */
     }
 
     /* Make sure everything is not interfering with the z-index of hearts */
@@ -67,5 +67,6 @@
       z-index: 1;  /* Ensure content isn't interfering with hearts */
     }
   </style>  
+
 </body>
 </html>
