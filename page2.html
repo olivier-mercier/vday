@@ -7,7 +7,6 @@
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
   <div class="container">
     <h1>Here’s what I’ve planned for us!</h1>
 
@@ -35,17 +34,12 @@
     const hearts = () => {
       const heart = document.createElement('div');
       heart.textContent = "❤️";
-      heart.style.position = 'absolute';  // Position hearts relative to the viewport
+      heart.classList.add('heart'); // Use the heart class defined in CSS
       heart.style.left = Math.random() * 100 + 'vw';  // Random horizontal position
-      heart.style.top = '100vh';  // Start from the bottom of the viewport
-      heart.style.zIndex = '9999';  // Ensure hearts appear above everything
-      heart.style.fontSize = '24px';  // Adjust the size of the hearts
-      heart.style.pointerEvents = 'none';  // Prevent interaction with the hearts
-      heart.style.animation = 'float 6s linear forwards';  // Animation for floating hearts
       document.body.appendChild(heart);
       setTimeout(() => heart.remove(), 6000);  // Remove after 6 seconds
     };
-  
+
     // Trigger floating hearts every 300ms
     setInterval(hearts, 300);
   </script>
